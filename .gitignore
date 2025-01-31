@@ -213,6 +213,8 @@ rebel-remote.xml
 # Nukkit generated files
 banned-ips.json
 banned-players.json
+command_data
+command_data/*
 nukkit.yml
 ops.txt
 server.log
