@@ -26,7 +26,8 @@ public class SparkInstaller {
         File sparkFile = null;
 
         if (spark != null) {
-            sparkFile = spark.getFile();
+            download = false; //TODO 验证sha1/md5
+            /*sparkFile = spark.getFile();
             try {
                 String sha1 = getFileSha1(sparkFile);
                 URL url = new URL("https://sparkapi.lucko.me/download/nukkit/sha1");
@@ -40,7 +41,7 @@ public class SparkInstaller {
             } catch (Exception e) {
                 download = false;
                 server.getLogger().alert("Failed to check spark update: " + e.getMessage());
-            }
+            }*/
         } else {
             download = true;
         }
@@ -50,7 +51,7 @@ public class SparkInstaller {
                 server.getPluginManager().disablePlugin(spark);
                 sparkFile.delete();
             }
-            try (InputStream in = new URL("https://sparkapi.lucko.me/download/nukkit").openStream()) {
+            try (InputStream in = new URL("https://ci.lucko.me/job/spark-extra-platforms/lastStableBuild/artifact/spark-nukkit/build/libs/spark-1.10.119-SNAPSHOT-nukkit.jar").openStream()) {
                 File targetPath = new File(server.getPluginPath() + "/spark.jar");
                 Files.copy(in, targetPath.toPath());
                 server.getPluginManager().loadPlugin(targetPath);
