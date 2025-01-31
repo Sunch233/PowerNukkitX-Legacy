@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.security.MessageDigest;
 
 @PowerNukkitXOnly
-@Since("1.20.10-r1")
+@Since("1.20.50-r1")
 public class SparkInstaller {
 
     public static boolean initSpark(@Nonnull Server server) {
